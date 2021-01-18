@@ -16,7 +16,7 @@
         <activity android:name=".videoActivity"></activity>
         <activity
             android:name=".chapters"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
