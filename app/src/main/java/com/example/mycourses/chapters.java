@@ -32,19 +32,23 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
     TextView subname, subwel;
     ImageView imageView;
     String subName, subImgUrl;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        subName = getIntent().getStringExtra("subName");
-        subImgUrl = getIntent().getStringExtra("subImgUrl");
 
         subname = findViewById(R.id.subName);
         subwel = findViewById(R.id.subWel);
         imageView = findViewById(R.id.subImg);
+        toolbar = findViewById(R.id.mainToolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        subName = getIntent().getStringExtra("subName");
+        subImgUrl = getIntent().getStringExtra("subImgUrl");
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

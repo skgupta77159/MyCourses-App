@@ -2,6 +2,7 @@ package com.example.mycourses;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -39,22 +40,26 @@ public class videoActivity extends AppCompatActivity {
     VideoView videoPlayer;
     ImageView fullScreen;
     FrameLayout frameLayout;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        url = getIntent().getStringExtra("VidUrl");
-        chpkey = getIntent().getStringExtra("chp");
-        subName = getIntent().getStringExtra("chpName");
-
+        toolbar = findViewById(R.id.mainToolbar);
         progressBar = findViewById(R.id.progressBar);
         title = findViewById(R.id.videoTitle);
         description = findViewById(R.id.videoDesc);
         videoPlayer = findViewById(R.id.videoView);
         fullScreen = findViewById(R.id.fullScreenOp);
         frameLayout = findViewById(R.id.frameLayout);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        url = getIntent().getStringExtra("VidUrl");
+        chpkey = getIntent().getStringExtra("chp");
+        subName = getIntent().getStringExtra("chpName");
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("videos").child(subName);
@@ -96,6 +101,7 @@ public class videoActivity extends AppCompatActivity {
                 int orientation = getResources().getConfiguration().orientation;
                 if(orientation == Configuration.ORIENTATION_PORTRAIT){
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
                     getSupportActionBar().hide();
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                     frameLayout.setLayoutParams(new ConstraintLayout.LayoutParams(new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)));
