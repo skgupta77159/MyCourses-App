@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,13 +31,16 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
     List<post> PostList = new ArrayList<>();
     TextView subname, subwel;
     ImageView imageView;
+    String subName, subImgUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String subName = getIntent().getStringExtra("subName");
-        String subImgUrl = getIntent().getStringExtra("subImgUrl");
+        subName = getIntent().getStringExtra("subName");
+        subImgUrl = getIntent().getStringExtra("subImgUrl");
 
         subname = findViewById(R.id.subName);
         subwel = findViewById(R.id.subWel);
@@ -78,11 +82,21 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
     public void onItemClick(int position) {
         Intent MainIntent = new Intent(chapters.this, videoActivity.class);
         MainIntent.putExtra("VidUrl",PostList.get(position).getVidurl());
+        MainIntent.putExtra("chp",PostList.get(position).getKey());
+        MainIntent.putExtra("chpName", subName);
         startActivity(MainIntent);
     }
 
     @Override
     public void onLongItemClick(int position) {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,16 +1,34 @@
 package com.example.mycourses;
 
 public class post {
-    String thumbnail, time, vidurl, title;
+    String thumbnail, time, vidurl, title, key, chpname;
 
     public post(){
     }
 
-    public post(String thumbnail, String time, String vidurl, String title) {
+    public post(String thumbnail, String time, String vidurl, String title, String key, String chpname) {
         this.thumbnail = thumbnail;
         this.time = time;
         this.vidurl = vidurl;
         this.title = title;
+        this.key = key;
+        this.chpname = chpname;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getChpname() {
+        return chpname;
+    }
+
+    public void setChpname(String chpname) {
+        this.chpname = chpname;
     }
 
     public String getTitle() {
