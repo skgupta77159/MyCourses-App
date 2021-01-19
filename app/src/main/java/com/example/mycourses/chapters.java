@@ -95,7 +95,7 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == android.R.id.home){
-            onBackPressed();
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
