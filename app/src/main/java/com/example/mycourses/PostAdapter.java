@@ -39,9 +39,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewholder
     public void onBindViewHolder(@NonNull PostViewholder holder, int position) {
         String thumb = postList.get(position).getThumbnail();
         String time = postList.get(position).getTime();
-       // String vidurl = postList.get(position).getVidurl();
         String title = postList.get(position).getTitle();
-        holder.setdata(title,time,thumb);
+        String chpName = postList.get(position).getChpname();
+        holder.setdata(title,time,thumb,chpName);
 
     }
 
@@ -52,7 +52,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewholder
 
     class PostViewholder extends RecyclerView.ViewHolder {
 
-        TextView text, title;
+        TextView text, title, chapterNo;
         ImageView image;
 
         public PostViewholder(@NonNull View itemView) {
@@ -60,6 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewholder
             text = itemView.findViewById(R.id.timing);
             title = itemView.findViewById(R.id.title);
             image = itemView.findViewById(R.id.thumbnail);
+            chapterNo = itemView.findViewById(R.id.chapterNo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -69,11 +70,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewholder
             });
         }
 
-        private void setdata(String Title, String Time, String Image){
+        private void setdata(String Title, String Time, String Image, String chpname){
             text.setText(Time);
             title.setText(Title);
+            chapterNo.setText(chpname);
             Picasso.get().load(Image).into(image);
-            //image.setImageURI(Uri.parse(Image));
 
         }
     }
