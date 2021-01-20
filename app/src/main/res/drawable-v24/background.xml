@@ -9,8 +9,8 @@
         >
     </gradient>
     <corners
-        android:bottomRightRadius="35dp"
-        android:bottomLeftRadius="35dp">
+        android:bottomRightRadius="150dp"
+        android:bottomLeftRadius="150dp">
 
     </corners>
 </shape>

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/purple_200"
     tools:context=".chapters"
     android:orientation="vertical">
 
@@ -42,12 +41,14 @@
                 android:layout_height="wrap_content"
                 android:text="subject"
                 android:textSize="20dp"
+                android:textColor="@color/green"
                 android:textAlignment="center"/>
             <TextView
                 android:id="@+id/subWel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Welcome message"
+                android:textColor="@color/green"
                 android:textAlignment="center"/>
         </LinearLayout>
 

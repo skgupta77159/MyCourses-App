@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/purple_200"
+    android:background="@color/white"
     android:layout_centerVertical="true"
     android:id="@+id/drawer_layout"
     tools:context=".MainActivity">
@@ -26,7 +26,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/mainToolbar">
+            android:layout_below="@id/mainToolbar"
+            android:layout_margin="0dp">
             <RelativeLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -42,7 +43,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="30dp"
                         android:layout_marginBottom="20dp"
-                        android:textStyle="bold|italic"
+                        android:textStyle="bold"
                         android:text="Hey Sushil What you want to learn today!"
                         android:textColor="#ffffff"
                         android:textSize="30dp"/>
@@ -70,6 +71,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemIconPadding="30dp"
+        app:itemIconTint="@android:color/holo_green_dark"
+        app:itemTextColor="@android:color/holo_green_dark"
         app:menu="@menu/navigation_menu" />
 
 
