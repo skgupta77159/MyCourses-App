@@ -21,6 +21,19 @@
             app:title="MyCourses"
             app:titleMarginStart="25dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/header_image_toolbar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/green"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/profile"
+            android:textAlignment="center" />
 
 
         <ScrollView
@@ -37,6 +50,7 @@
                     android:layout_height="250dp"
                     android:background="@drawable/dashboardgradient">
                     <TextView
+                        android:id="@+id/naming_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"

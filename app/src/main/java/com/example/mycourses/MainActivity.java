@@ -16,13 +16,21 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private CircularImageView header_image;
-    private TextView header_username;
+    private CircularImageView header_image, header_image_toolbar;
+    private TextView header_username, naming_status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
         header_image = navView.findViewById(R.id.header_image);
         header_username = navView.findViewById(R.id.header_username);
+        naming_status = findViewById(R.id.naming_status);
+        header_image_toolbar = findViewById(R.id.header_image_toolbar);
 
         setSupportActionBar(toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -63,6 +73,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
         database = FirebaseDatabase.getInstance();
         dataRef = database.getReference("courses");
+
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if(signInAccount != null){
+            Picasso.get().load(signInAccount.getPhotoUrl()).into(header_image);
+            Picasso.get().load(signInAccount.getPhotoUrl()).into(header_image_toolbar);
+            header_username.setText(signInAccount.getDisplayName());
+            naming_status.setText("Hey " + signInAccount.getGivenName() + " What do you want to learn today!");
+        }
 
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -107,7 +125,22 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                         Toast.makeText(MainActivity.this, "settings", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_logout:
-                        Toast.makeText(MainActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                        GoogleSignInOptions gso = new GoogleSignInOptions.
+                                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                                build();
+                        GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(MainActivity.this,gso);
+                        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    FirebaseAuth.getInstance().signOut();
+                                    Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); // clear previous task (optional)
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
                         break;
                 }
             }
