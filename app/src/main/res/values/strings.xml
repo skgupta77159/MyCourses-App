@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">MyCourses</string>
-    <string name="drawer_open"/>
-    <string name="drawer_close"/>
+    <string name="drawer_open" />
+    <string name="drawer_close" />
 </resources>

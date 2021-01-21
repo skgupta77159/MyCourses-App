@@ -80,7 +80,6 @@ public class videoActivity extends AppCompatActivity {
         });
 
 
-
         Uri videoUrl = Uri.parse(url);
         videoPlayer.setVideoURI(videoUrl);
         MediaController mc = new MediaController(this);
@@ -97,7 +96,6 @@ public class videoActivity extends AppCompatActivity {
         fullScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //fullScreen.setVisibility(View.GONE);
                 int orientation = getResources().getConfiguration().orientation;
                 if(orientation == Configuration.ORIENTATION_PORTRAIT){
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
