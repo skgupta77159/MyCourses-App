@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private CircularImageView header_image, header_image_toolbar;
-    private TextView header_username, naming_status;
+    private TextView header_username, naming_status, header_email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         header_username = navView.findViewById(R.id.header_username);
         naming_status = findViewById(R.id.naming_status);
         header_image_toolbar = findViewById(R.id.header_image_toolbar);
+        header_email = navView.findViewById(R.id.header_email);
 
         setSupportActionBar(toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
             Picasso.get().load(signInAccount.getPhotoUrl()).into(header_image);
             Picasso.get().load(signInAccount.getPhotoUrl()).into(header_image_toolbar);
             header_username.setText(signInAccount.getDisplayName());
+            header_email.setText(signInAccount.getEmail());
             naming_status.setText("Hey " + signInAccount.getGivenName() + " What do you want to learn today!");
         }
 
