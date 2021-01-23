@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 public class Profile_Activity extends AppCompatActivity {
 
     CircularImageView image;
-    TextView name, email;
+    TextView name, email, tv1, tv2, tv3, tv4;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,10 @@ public class Profile_Activity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         toolbar = findViewById(R.id.mainToolbar);
+        tv1 = findViewById(R.id.tv1);
+        tv2 = findViewById(R.id.tv2);
+        tv3 = findViewById(R.id.tv3);
+        tv4 = findViewById(R.id.tv4);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -38,6 +42,9 @@ public class Profile_Activity extends AppCompatActivity {
             Picasso.get().load(signInAccount.getPhotoUrl()).into(image);
             name.setText(signInAccount.getDisplayName());
             email.setText(signInAccount.getEmail());
+            tv1.setText(signInAccount.getFamilyName());
+            tv2.setText(signInAccount.getGivenName());
+            tv3.setText(signInAccount.getId());
         }
     }
 
