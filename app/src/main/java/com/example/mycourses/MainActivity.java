@@ -107,6 +107,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
             }
         });
 
+        header_image_toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Profile_Activity.class);
+                startActivity(intent);
+            }
+        });
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -117,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
             private void UserMenuSelectorItem(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.nav_profile:
-                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Profile_Activity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_home:
                         Toast.makeText(MainActivity.this, "home", Toast.LENGTH_SHORT).show();
