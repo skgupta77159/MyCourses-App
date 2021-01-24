@@ -3,10 +3,14 @@ package com.example.mycourses;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,13 +26,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
 
 public class Login_Activity extends AppCompatActivity {
 
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference userReference;
     private ImageView close;
+    private ProgressDialog loadingbar;
 
 
     @Override
@@ -37,11 +49,13 @@ public class Login_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_);
 
         close = findViewById(R.id.close);
+        loadingbar = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
 
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
+
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +67,9 @@ public class Login_Activity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadingbar.setMessage("Logging with Google Account...");
+                loadingbar.show();
+                loadingbar.setCanceledOnTouchOutside(true);
                 signIn();
             }
         });
@@ -94,13 +111,38 @@ public class Login_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                          //  FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            String CurrentUserId = mAuth.getCurrentUser().getUid();
+                            userReference = firebaseDatabase.getInstance().getReference("users").child(CurrentUserId);
+
+                            GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(Login_Activity.this);
+                            if(signInAccount != null){
+                                HashMap Usermap = new HashMap();
+                                Usermap.put("fullName", signInAccount.getDisplayName());
+                                Usermap.put("firstName", signInAccount.getGivenName());
+                                Usermap.put("lastName", signInAccount.getFamilyName());
+                                Usermap.put("email", signInAccount.getEmail());
+                                Usermap.put("profileUrl", signInAccount.getPhotoUrl().toString());
+                                userReference.updateChildren(Usermap).addOnCompleteListener(new OnCompleteListener() {
+                                    @Override
+                                    public void onComplete(@NonNull Task task) {
+                                        if(task.isSuccessful()) {
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                            loadingbar.dismiss();
+                                        }
+                                        else{
+                                            loadingbar.dismiss();
+                                        }
+                                    }
+                                });
+                            }
+
+
                         }
                         else {
                             Toast.makeText(Login_Activity.this,"Sorry Authentication Failed", Toast.LENGTH_SHORT).show();
+                            loadingbar.dismiss();
                         }
                     }
         });
