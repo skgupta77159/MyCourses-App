@@ -40,8 +40,7 @@ public class Login_Activity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference userReference;
     private ImageView close;
-    private ProgressDialog loadingbar;
-
+    private ProgressDialog loadingBar;
 
     @Override 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,7 @@ public class Login_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_);
 
         close = findViewById(R.id.close);
-        loadingbar = new ProgressDialog(this);
+        loadingBar = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -67,9 +66,9 @@ public class Login_Activity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingbar.setMessage("Logging with Google Account...");
-                loadingbar.show();
-                loadingbar.setCanceledOnTouchOutside(true);
+                loadingBar.setMessage("Logging with Google Account...");
+                loadingBar.show();
+                loadingBar.setCanceledOnTouchOutside(true);
                 signIn();
             }
         });
@@ -129,10 +128,10 @@ public class Login_Activity extends AppCompatActivity {
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);
                                             finish();
-                                            loadingbar.dismiss();
+                                            loadingBar.dismiss();
                                         }
                                         else{
-                                            loadingbar.dismiss();
+                                            loadingBar.dismiss();
                                         }
                                     }
                                 });
@@ -142,7 +141,7 @@ public class Login_Activity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(Login_Activity.this,"Sorry Authentication Failed", Toast.LENGTH_SHORT).show();
-                            loadingbar.dismiss();
+                            loadingBar.dismiss();
                         }
                     }
         });
