@@ -42,9 +42,8 @@ public class Profile_Activity extends AppCompatActivity {
             Picasso.get().load(signInAccount.getPhotoUrl()).into(image);
             name.setText(signInAccount.getDisplayName());
             email.setText(signInAccount.getEmail());
-            tv1.setText(signInAccount.getFamilyName());
-            tv2.setText(signInAccount.getGivenName());
-            tv3.setText(signInAccount.getId());
+            tv1.setText(signInAccount.getGivenName());
+            tv2.setText(signInAccount.getFamilyName());
         }
     }
 
