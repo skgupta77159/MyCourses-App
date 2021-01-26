@@ -15,52 +15,72 @@
         app:title="Profile"
         app:titleMarginStart="25dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:background="@color/purple_500"
-        android:orientation="vertical"
-        android:paddingBottom="15dp">
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/image"
-            android:layout_width="110dp"
-            android:layout_height="100dp"
-            app:civ_border_color="@color/green"
-            app:civ_border_width="1dp"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/name"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mainToolbar">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"/>
-        <TextView
-            android:id="@+id/email"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="15dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_margin="10dp">
-            <TextView
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linear1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Courses you are Enrolled in"/>
-        </LinearLayout>
+                android:gravity="center"
+                android:background="@color/purple_500"
+                android:orientation="vertical"
+                android:paddingBottom="15dp">
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/image"
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    app:civ_border_color="@color/green"
+                    app:civ_border_width="1dp"
+                    android:layout_margin="5dp"/>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:id="@+id/email"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="15dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_below="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Courses you are Enrolled in"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/enrolled_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
-    </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

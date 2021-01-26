@@ -39,8 +39,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
     RecyclerView recyclerView;
+    private FirebaseAuth mAuth;
     FirebaseDatabase database;
-    DatabaseReference dataRef;
+    DatabaseReference dataRef, userRef;
     private Toolbar toolbar;
     List<sublist> SubList = new ArrayList<>();
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private NavigationView navigationView;
     private CircularImageView header_image, header_image_toolbar;
     private TextView header_username, naming_status, header_email;
+    String CurrentUserId;
 
 
     @Override
@@ -74,8 +76,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2,GridLayoutManager.VERTICAL,false);
 
+        mAuth = FirebaseAuth.getInstance();
+        CurrentUserId = mAuth.getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         dataRef = database.getReference("courses");
+        userRef = database.getReference("users").child(CurrentUserId);
+
+
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null){
@@ -164,9 +171,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     @Override
     public void onItemClick(int position) {
+        userRef.child("enrolledCourses").child(SubList.get(position).getSubname()).setValue("0");
         Intent MainIntent = new Intent(MainActivity.this, chapters.class);
-        MainIntent.putExtra("subName",SubList.get(position).getSubname());
-        MainIntent.putExtra("subImgUrl",SubList.get(position).getSuburl());
+        MainIntent.putExtra("subName", SubList.get(position).getSubname());
+        MainIntent.putExtra("subImgUrl", SubList.get(position).getSuburl());
         startActivity(MainIntent);
     }
 
