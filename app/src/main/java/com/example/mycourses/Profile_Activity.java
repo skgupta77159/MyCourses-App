@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 public class Profile_Activity extends AppCompatActivity {
 
     CircularImageView image;
-    TextView name, email, tv1, tv2, tv3, tv4;
+    TextView name, email, tv1, tv2;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,6 @@ public class Profile_Activity extends AppCompatActivity {
         toolbar = findViewById(R.id.mainToolbar);
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
-        tv3 = findViewById(R.id.tv3);
-        tv4 = findViewById(R.id.tv4);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

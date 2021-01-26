@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,12 +53,14 @@ public class SubAdapter extends RecyclerView.Adapter<SubAdapter.SubViewholder>{
 
         TextView subject;
         ImageView subjectImage;
+        Button enroll_button;
         public SubViewholder(@NonNull View itemView) {
             super(itemView);
             subject = itemView.findViewById(R.id.courseName);
             subjectImage = itemView.findViewById(R.id.courseImg);
+            enroll_button = itemView.findViewById(R.id.enroll_button);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            enroll_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     recyclerViewClickInterface.onItemClick(getAdapterPosition());

@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:background="@color/purple_500"
         android:orientation="vertical">
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/image"
@@ -57,18 +58,6 @@
                 android:textSize="15dp"/>
             <TextView
                 android:id="@+id/tv2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="15dp"/>
-            <TextView
-                android:id="@+id/tv3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="15dp"/>
-            <TextView
-                android:id="@+id/tv4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
