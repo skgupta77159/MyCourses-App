@@ -1,4 +1,4 @@
-package com.example.mycourses;
+package com.example.mycourses.model;
 
 public class post {
     String thumbnail, time, vidurl, title, key, chpname;

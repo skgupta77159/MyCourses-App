@@ -36,11 +36,10 @@
             android:textAlignment="center" />
 
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mainToolbar"
-            android:layout_margin="0dp">
+            android:layout_height="match_parent"
+            android:layout_below="@id/mainToolbar">
             <RelativeLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -65,19 +64,18 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="160dp"
-                    android:paddingTop="25dp">
+                    android:layout_height="match_parent">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/subRecyclerView"
+                        android:paddingTop="185dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
                 </LinearLayout>
 
             </RelativeLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

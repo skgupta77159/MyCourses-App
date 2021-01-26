@@ -1,4 +1,4 @@
-package com.example.mycourses;
+package com.example.mycourses.model;
 
 public class sublist {
     String subname, suburl;

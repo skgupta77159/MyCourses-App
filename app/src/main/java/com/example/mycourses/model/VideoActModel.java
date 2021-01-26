@@ -1,4 +1,4 @@
-package com.example.mycourses;
+package com.example.mycourses.model;
 
 public class VideoActModel {
     String title, description;
