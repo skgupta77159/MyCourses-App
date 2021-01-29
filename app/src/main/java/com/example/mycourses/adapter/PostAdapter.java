@@ -77,7 +77,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewholder
             title.setText(Title);
             chapterNo.setText(chpname);
             Picasso.get().load(Image).into(image);
-
         }
     }
 }

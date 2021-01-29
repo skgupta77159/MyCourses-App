@@ -38,15 +38,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/courseName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Java"
-                    android:textStyle="bold"
-                    android:textColor="@color/green"
                     android:textAlignment="center"
-                    android:textSize="22dp"/>
+                    android:textColor="@color/green"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/coursePercent"
                     android:layout_width="match_parent"
