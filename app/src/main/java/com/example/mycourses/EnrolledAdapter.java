@@ -58,8 +58,8 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Enroll
             imageView = itemView.findViewById(R.id.courseImg);
         }
         private void setdata(String name, String percent, String url){
-            chpName.setText(name);
-            chpPercent.setText(percent);
+            chpName.setText(name.toUpperCase());
+            chpPercent.setText("Completed: " + percent + "%");
             Picasso.get().load(url).into(imageView);
         }
     }
