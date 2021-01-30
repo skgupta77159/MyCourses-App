@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.mycourses.model.VideoActModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +36,8 @@ public class videoActivity extends AppCompatActivity {
     String url, chpkey, subName;
     ProgressBar progressBar;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    FirebaseAuth mAuth;
+    DatabaseReference databaseReference, percentRef;
     TextView title, description;
     VideoView videoPlayer;
     ImageView fullScreen;
@@ -61,8 +63,23 @@ public class videoActivity extends AppCompatActivity {
         subName = getIntent().getStringExtra("chpName");
 
 
+        mAuth = FirebaseAuth.getInstance();
+        String userId = mAuth.getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("videos").child(subName);
+        percentRef = firebaseDatabase.getReference("users").child(userId).child("enrolledCourses").child(subName).child("cPercent");
+        percentRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    percentRef.child(chpkey).setValue(chpkey);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -78,7 +95,6 @@ public class videoActivity extends AppCompatActivity {
 
             }
         });
-
 
         Uri videoUrl = Uri.parse(url);
         videoPlayer.setVideoURI(videoUrl);
