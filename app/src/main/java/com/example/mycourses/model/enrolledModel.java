@@ -1,4 +1,4 @@
-package com.example.mycourses;
+package com.example.mycourses.model;
 
 public class enrolledModel {
     String cName, cPercent, cUrl;
