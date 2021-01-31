@@ -42,7 +42,7 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Enroll
         String cTotal = percentList.get(position).getcTotal();
 
         float f = ((Float.parseFloat(cPercent)/Float.parseFloat(cTotal))*100);
-        f = (float) (Math.round(f*100.0)/100.0);
+        f = (float) (Math.round(f*10.0)/10.0);
         String percentage = String.valueOf(f);
 
 
