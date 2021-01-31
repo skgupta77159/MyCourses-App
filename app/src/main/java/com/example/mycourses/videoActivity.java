@@ -67,13 +67,11 @@ public class videoActivity extends AppCompatActivity {
         String userId = mAuth.getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("videos").child(subName);
-        percentRef = firebaseDatabase.getReference("users").child(userId).child("enrolledCourses").child(subName).child("cPercent");
+        percentRef = firebaseDatabase.getReference("users").child(userId).child("enrolledCourses").child(subName);
         percentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    percentRef.child(chpkey).setValue(chpkey);
-                }
+                    percentRef.child("cPercent").child(chpkey).setValue(chpkey);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

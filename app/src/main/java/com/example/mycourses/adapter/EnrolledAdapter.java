@@ -36,9 +36,17 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Enroll
     @Override
     public void onBindViewHolder(@NonNull EnrolledViewholder holder, int position) {
         String cName = percentList.get(position).getcName();
-        String cPercent = percentList.get(position).getcPercent();
         String cUrl = percentList.get(position).getcUrl();
-        holder.setdata(cName, cPercent, cUrl);
+
+        String cPercent = percentList.get(position).getcPercent();
+        String cTotal = percentList.get(position).getcTotal();
+
+        float f = ((Float.parseFloat(cPercent)/Float.parseFloat(cTotal))*100);
+        f = (float) (Math.round(f*100.0)/100.0);
+        String percentage = String.valueOf(f);
+
+
+        holder.setdata(cName, percentage, cUrl);
     }
 
     @Override

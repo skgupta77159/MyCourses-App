@@ -1,15 +1,24 @@
 package com.example.mycourses.model;
 
 public class enrolledModel {
-    String cName, cPercent, cUrl;
+    String cName, cPercent, cUrl, cTotal;
 
-    public enrolledModel(String cName, String cPercent, String cUrl) {
+    public enrolledModel(String cName, String cPercent, String cUrl, String cTotal) {
         this.cName = cName;
         this.cPercent = cPercent;
         this.cUrl = cUrl;
+        this.cTotal = cTotal;
     }
 
     public enrolledModel() {
+    }
+
+    public String getcTotal() {
+        return cTotal;
+    }
+
+    public void setcTotal(String cTotal) {
+        this.cTotal = cTotal;
     }
 
     public String getcName() {

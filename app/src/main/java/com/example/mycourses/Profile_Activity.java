@@ -33,7 +33,7 @@ public class Profile_Activity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView mRecyclerView;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference dataRef;
+    DatabaseReference dataRef, chapterRef;
     FirebaseAuth mAuth;
     String CurrentUserId;
     List<enrolledModel> percentList = new ArrayList<>();
@@ -55,6 +55,7 @@ public class Profile_Activity extends AppCompatActivity {
         CurrentUserId = mAuth.getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
         dataRef = firebaseDatabase.getReference("users").child(CurrentUserId).child("enrolledCourses");
+        chapterRef = firebaseDatabase.getReference("videos");
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null){
@@ -62,19 +63,42 @@ public class Profile_Activity extends AppCompatActivity {
             name.setText(signInAccount.getDisplayName());
             email.setText(signInAccount.getEmail());
         }
+        createPercentage();
 
+    }
+
+    private void createPercentage() {
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     for(DataSnapshot chpSnapshot: snapshot.getChildren()){
-                        enrolledModel percentInfo = chpSnapshot.getValue(enrolledModel.class);
-                        percentList.add(percentInfo);
-                        EnrolledAdapter enrolledAdapter = new EnrolledAdapter(percentList);
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        enrolledAdapter.notifyDataSetChanged();
-                        mRecyclerView.setAdapter(enrolledAdapter);
+                        String CPercent, CName, CUrl;
+                        CPercent = String.valueOf(chpSnapshot.child("cPercent").getChildrenCount());
+                        CName = chpSnapshot.child("cName").getValue().toString();
+                        CUrl = chpSnapshot.child("cUrl").getValue().toString();
+                        String chapterKey = chpSnapshot.getKey();
+                        chapterRef.child(chapterKey).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String total = String.valueOf(snapshot.getChildrenCount());
+                                enrolledModel percentInfo = new enrolledModel(CName, CPercent, CUrl, total);
+                                percentList.add(percentInfo);
+                                EnrolledAdapter enrolledAdapter = new EnrolledAdapter(percentList);
+                                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                enrolledAdapter.notifyDataSetChanged();
+                                mRecyclerView.setAdapter(enrolledAdapter);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
                     }
+
                 }
             }
 
@@ -83,8 +107,6 @@ public class Profile_Activity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     @Override
