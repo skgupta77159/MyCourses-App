@@ -171,12 +171,19 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     @Override
     public void onItemClick(int position) {
+
         userRef.child("enrolledCourses").child(SubList.get(position).getSubname()).child("cName").setValue(SubList.get(position).getSubname());
-        userRef.child("enrolledCourses").child(SubList.get(position).getSubname()).child("cUrl").setValue(SubList.get(position).getSuburl());
-        Intent MainIntent = new Intent(MainActivity.this, chapters.class);
-        MainIntent.putExtra("subName", SubList.get(position).getSubname());
-        MainIntent.putExtra("subImgUrl", SubList.get(position).getSuburl());
-        startActivity(MainIntent);
+        userRef.child("enrolledCourses").child(SubList.get(position).getSubname()).child("cUrl").setValue(SubList.get(position).getSuburl()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Intent MainIntent = new Intent(MainActivity.this, chapters.class);
+                    MainIntent.putExtra("subName", SubList.get(position).getSubname());
+                    MainIntent.putExtra("subImgUrl", SubList.get(position).getSuburl());
+                    startActivity(MainIntent);
+                }
+            }
+        });
     }
 
     @Override
