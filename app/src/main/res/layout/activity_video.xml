@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/gradient1"
         android:minHeight="?attr/actionBarSize"
-        app:title="MyCourses"
         app:titleMarginStart="25dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints" />

@@ -56,13 +56,15 @@ public class videoActivity extends AppCompatActivity {
         fullScreen = findViewById(R.id.fullScreenOp);
         frameLayout = findViewById(R.id.frameLayout);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         url = getIntent().getStringExtra("VidUrl");
         chpkey = getIntent().getStringExtra("chp");
         subName = getIntent().getStringExtra("subName");
         chpName = getIntent().getStringExtra("chpName");
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(chpName);
 
         mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
