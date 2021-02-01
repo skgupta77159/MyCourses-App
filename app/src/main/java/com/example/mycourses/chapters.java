@@ -89,6 +89,7 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
         MainIntent.putExtra("VidUrl",PostList.get(position).getVidurl());
         MainIntent.putExtra("chp",PostList.get(position).getKey());
         MainIntent.putExtra("subName", subName);
+        MainIntent.putExtra("chpName", PostList.get(position).getChpname());
         startActivity(MainIntent);
     }
 

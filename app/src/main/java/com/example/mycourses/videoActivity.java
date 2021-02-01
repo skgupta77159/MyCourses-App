@@ -33,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class videoActivity extends AppCompatActivity {
 
-    String url, chpkey, subName;
+    String url, chpkey, subName, chpName;
     ProgressBar progressBar;
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth mAuth;
@@ -61,6 +61,7 @@ public class videoActivity extends AppCompatActivity {
         url = getIntent().getStringExtra("VidUrl");
         chpkey = getIntent().getStringExtra("chp");
         subName = getIntent().getStringExtra("subName");
+        chpName = getIntent().getStringExtra("chpName");
 
 
         mAuth = FirebaseAuth.getInstance();
