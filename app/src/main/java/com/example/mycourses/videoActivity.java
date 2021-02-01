@@ -60,7 +60,7 @@ public class videoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         url = getIntent().getStringExtra("VidUrl");
         chpkey = getIntent().getStringExtra("chp");
-        subName = getIntent().getStringExtra("chpName");
+        subName = getIntent().getStringExtra("subName");
 
 
         mAuth = FirebaseAuth.getInstance();

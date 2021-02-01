@@ -88,7 +88,7 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
         Intent MainIntent = new Intent(chapters.this, videoActivity.class);
         MainIntent.putExtra("VidUrl",PostList.get(position).getVidurl());
         MainIntent.putExtra("chp",PostList.get(position).getKey());
-        MainIntent.putExtra("chpName", subName);
+        MainIntent.putExtra("subName", subName);
         startActivity(MainIntent);
     }
 
