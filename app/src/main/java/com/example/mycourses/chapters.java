@@ -40,46 +40,53 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
+        try {
 
-        sName = findViewById(R.id.subName);
-        sWel = findViewById(R.id.subWel);
-        imageView = findViewById(R.id.subImg);
-        toolbar = findViewById(R.id.mainToolbar);
-        recyclerView = findViewById(R.id.recycler_view);
+            sName = findViewById(R.id.subName);
+            sWel = findViewById(R.id.subWel);
+            imageView = findViewById(R.id.subImg);
+            toolbar = findViewById(R.id.mainToolbar);
+            recyclerView = findViewById(R.id.recycler_view);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        subName = getIntent().getStringExtra("subName");
-        subImgUrl = getIntent().getStringExtra("subImgUrl");
+            subName = getIntent().getStringExtra("subName");
+            subImgUrl = getIntent().getStringExtra("subImgUrl");
 
-        database = FirebaseDatabase.getInstance();
-        dataRef = database.getReference("videos").child(subName);
+            database = FirebaseDatabase.getInstance();
+            dataRef = database.getReference("videos").child(subName);
 
-        sName.setText(subName.toUpperCase());
-        sWel.setText("Welcome to " + subName.toUpperCase() + " course");
-        Picasso.get().load(subImgUrl).into(imageView);
+            sName.setText(subName.toUpperCase());
+            sWel.setText("Welcome to " + subName.toUpperCase() + " course");
+            Picasso.get().load(subImgUrl).into(imageView);
 
-        dataRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot chpSnapshot: snapshot.getChildren()){
-                        post Post = chpSnapshot.getValue(post.class);
-                        PostList.add(Post);
-                        PostAdapter postsAdapter = new PostAdapter(PostList, chapters.this);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(chapters.this));
-                        postsAdapter.notifyDataSetChanged();
-                        recyclerView.setAdapter(postsAdapter);
+            dataRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        for(DataSnapshot chpSnapshot: snapshot.getChildren()){
+                            post Post = chpSnapshot.getValue(post.class);
+                            PostList.add(Post);
+                            PostAdapter postsAdapter = new PostAdapter(PostList, chapters.this);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(chapters.this));
+                            postsAdapter.notifyDataSetChanged();
+                            recyclerView.setAdapter(postsAdapter);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+
+        }catch (Exception e){
+            Intent MainIntent = new Intent(chapters.this, MainActivity.class);
+            startActivity(MainIntent);
+            finish();
+        }
     }
 
     @Override

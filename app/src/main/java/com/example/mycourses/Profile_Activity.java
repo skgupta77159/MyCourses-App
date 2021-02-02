@@ -73,32 +73,30 @@ public class Profile_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     for(DataSnapshot chpSnapshot: snapshot.getChildren()){
-                        String CPercent, CName, CUrl;
-                        CPercent = String.valueOf(chpSnapshot.child("cPercent").getChildrenCount());
-                        CName = chpSnapshot.child("cName").getValue().toString();
-                        CUrl = chpSnapshot.child("cUrl").getValue().toString();
-                        String chapterKey = chpSnapshot.getKey();
-                        chapterRef.child(chapterKey).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String total = String.valueOf(snapshot.getChildrenCount());
-                                enrolledModel percentInfo = new enrolledModel(CName, CPercent, CUrl, total);
-                                percentList.add(percentInfo);
-                                EnrolledAdapter enrolledAdapter = new EnrolledAdapter(percentList);
-                                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                                enrolledAdapter.notifyDataSetChanged();
-                                mRecyclerView.setAdapter(enrolledAdapter);
-                            }
+                        if(chpSnapshot!=null){
+                            String courseName = chpSnapshot.getKey();
+                            String CPercent, CName, CUrl;
+                            CPercent = String.valueOf(chpSnapshot.child("cPercent").getChildrenCount());
+                            CUrl = chpSnapshot.child("cUrl").getValue(String.class);
+                            CName = chpSnapshot.child("cName").getValue().toString();
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
-
+                            chapterRef.child(courseName).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String total = String.valueOf(snapshot.getChildrenCount());
+                                    enrolledModel percentInfo = new enrolledModel(CName, CPercent, CUrl, total);
+                                    percentList.add(percentInfo);
+                                    EnrolledAdapter enrolledAdapter = new EnrolledAdapter(percentList);
+                                    mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                    enrolledAdapter.notifyDataSetChanged();
+                                    mRecyclerView.setAdapter(enrolledAdapter);
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                }
+                            });
+                        }
                     }
-
                 }
             }
 
