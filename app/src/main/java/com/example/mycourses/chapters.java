@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -30,7 +31,7 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
     FirebaseDatabase database;
     DatabaseReference dataRef;
     List<post> PostList = new ArrayList<>();
-    TextView subname, subwel;
+    TextView sName, sWel;
     ImageView imageView;
     String subName, subImgUrl;
     Toolbar toolbar;
@@ -40,10 +41,11 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
 
-        subname = findViewById(R.id.subName);
-        subwel = findViewById(R.id.subWel);
+        sName = findViewById(R.id.subName);
+        sWel = findViewById(R.id.subWel);
         imageView = findViewById(R.id.subImg);
         toolbar = findViewById(R.id.mainToolbar);
+        recyclerView = findViewById(R.id.recycler_view);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,14 +53,11 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
         subName = getIntent().getStringExtra("subName");
         subImgUrl = getIntent().getStringExtra("subImgUrl");
 
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         database = FirebaseDatabase.getInstance();
         dataRef = database.getReference("videos").child(subName);
 
-        subname.setText(subName.toUpperCase());
-        subwel.setText("Welcome to " + subName.toUpperCase() + " course");
+        sName.setText(subName.toUpperCase());
+        sWel.setText("Welcome to " + subName.toUpperCase() + " course");
         Picasso.get().load(subImgUrl).into(imageView);
 
         dataRef.addValueEventListener(new ValueEventListener() {
