@@ -136,13 +136,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                         startActivity(intent);
                         break;
                     case R.id.nav_home:
-                        Toast.makeText(MainActivity.this, "home", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "You are in home ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_messages:
                         Toast.makeText(MainActivity.this, "messages", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_settings:
-                        Toast.makeText(MainActivity.this, "settings", Toast.LENGTH_SHORT).show();
+                        Intent intent2 = new Intent(MainActivity.this, Setting.class);
+                        startActivity(intent2);
                         break;
                     case R.id.nav_logout:
                         GoogleSignInOptions gso = new GoogleSignInOptions.
