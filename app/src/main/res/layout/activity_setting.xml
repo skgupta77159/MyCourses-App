@@ -165,7 +165,7 @@
                             android:src="@drawable/share"
                             />
                         <TextView
-                            android:id="@+id/txtshare"
+                            android:id="@+id/txtShare"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"

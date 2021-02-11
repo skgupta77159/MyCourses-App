@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Setting extends AppCompatActivity {
     Toolbar toolbar;
-    TextView txtRating, txtAbout, txtHelp, txtVersion, txtLogout;
+    TextView txtRating, txtAbout, txtHelp, txtVersion, txtLogout, txtShare;
     private FirebaseAuth mAuth;
 
     @Override
@@ -36,6 +36,7 @@ public class Setting extends AppCompatActivity {
         txtHelp = findViewById(R.id.txtHelp);
         txtVersion = findViewById(R.id.txtVersion);
         txtLogout = findViewById(R.id.txtLogout);
+        txtShare = findViewById(R.id.txtShare);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -85,6 +86,19 @@ public class Setting extends AppCompatActivity {
                 String uri = "https://github.com/skgupta77159/MyCourses-App";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
+            }
+        });
+
+        txtShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String body = "Download Link";
+                String title = "https://github.com/skgupta77159/MyCourses-App";
+                intent.putExtra(Intent.EXTRA_SUBJECT,body);
+                intent.putExtra(Intent.EXTRA_TEXT,title);
+                startActivity(Intent.createChooser(intent,"Share using"));
             }
         });
 
