@@ -48,6 +48,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:focusable="true">
                     <LinearLayout
@@ -60,7 +61,6 @@
                             android:src="@drawable/about"
                             />
                         <TextView
-                            android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -84,6 +84,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:focusable="true">
                     <LinearLayout
@@ -96,7 +97,6 @@
                             android:src="@drawable/rating"
                             />
                         <TextView
-                            android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -119,6 +119,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:focusable="true">
                     <LinearLayout
@@ -131,7 +132,6 @@
                             android:src="@drawable/help"
                             />
                         <TextView
-                            android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -154,6 +154,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:focusable="true">
                     <LinearLayout
@@ -166,7 +167,6 @@
                             android:src="@drawable/share"
                             />
                         <TextView
-                            android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -191,6 +191,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:focusable="true">
                     <LinearLayout
@@ -203,7 +204,6 @@
                             android:src="@drawable/version"
                             />
                         <TextView
-                            android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -226,6 +226,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:focusable="true">
                     <LinearLayout
@@ -238,7 +239,6 @@
                             android:src="@drawable/logout1"
                             />
                         <TextView
-                            android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
