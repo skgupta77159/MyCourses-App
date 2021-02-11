@@ -3,6 +3,7 @@ package com.example.mycourses;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Setting extends AppCompatActivity {
     Toolbar toolbar;
-    TextView txtRating, txtAbout, txtHelp, txtVersion, txtLogout, txtShare;
+    CardView txtRating, txtAbout, txtHelp, txtVersion, txtLogout, txtShare;
     private FirebaseAuth mAuth;
 
     @Override
@@ -95,7 +96,7 @@ public class Setting extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 String body = "Download Link";
-                String title = "https://github.com/skgupta77159/MyCourses-App";
+                String title = "https://drive.google.com/file/d/1bIFq7e3ygR6kC-iuIWDJWGZXn692E6Z3/view?usp=sharing";
                 intent.putExtra(Intent.EXTRA_SUBJECT,body);
                 intent.putExtra(Intent.EXTRA_TEXT,title);
                 startActivity(Intent.createChooser(intent,"Share using"));

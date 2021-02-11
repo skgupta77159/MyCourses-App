@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/txtAbout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -59,7 +60,6 @@
                             android:src="@drawable/about"
                             />
                         <TextView
-                            android:id="@+id/txtAbout"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/txtRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -95,7 +96,6 @@
                             android:src="@drawable/rating"
                             />
                         <TextView
-                            android:id="@+id/txtRating"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
@@ -113,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/txtHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -130,7 +131,6 @@
                             android:src="@drawable/help"
                             />
                         <TextView
-                            android:id="@+id/txtHelp"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
@@ -148,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/txtShare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -165,7 +166,6 @@
                             android:src="@drawable/share"
                             />
                         <TextView
-                            android:id="@+id/txtShare"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
@@ -185,6 +185,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/txtVersion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -202,7 +203,6 @@
                             android:src="@drawable/version"
                             />
                         <TextView
-                            android:id="@+id/txtVersion"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
@@ -220,6 +220,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/txtLogout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -237,7 +238,6 @@
                             android:src="@drawable/logout1"
                             />
                         <TextView
-                            android:id="@+id/txtLogout"
                             android:clickable="true"
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
