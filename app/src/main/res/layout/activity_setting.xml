@@ -54,6 +54,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
                         android:paddingStart="10dp">
                         <ImageView
                             android:layout_width="wrap_content"
@@ -64,7 +66,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="About"
+                            android:text="| About"
                             android:padding="8dp"
                             android:textSize="20dp"/>
                     </LinearLayout>
@@ -90,7 +92,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="10dp">
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -100,7 +104,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Give Rating"
+                            android:text="| Give Rating"
                             android:padding="8dp"
                             android:textSize="20dp"/>
                     </LinearLayout>
@@ -125,7 +129,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="10dp">
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -135,7 +141,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Help &amp; FAQ"
+                            android:text="| Help &amp; FAQ"
                             android:padding="8dp"
                             android:textSize="20dp"/>
                     </LinearLayout>
@@ -160,7 +166,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="10dp">
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -170,7 +178,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Share with Friends"
+                            android:text="| Share with Friends"
                             android:padding="8dp"
                             android:textSize="20dp"/>
                     </LinearLayout>
@@ -197,7 +205,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="10dp">
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -207,7 +217,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Version 1.0"
+                            android:text="| Version 1.0"
                             android:padding="8dp"
                             android:textSize="20dp"/>
                     </LinearLayout>
@@ -232,7 +242,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="10dp">
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -242,7 +254,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Logout"
+                            android:text="| Logout"
                             android:padding="8dp"
                             android:textSize="20dp"/>
                     </LinearLayout>
