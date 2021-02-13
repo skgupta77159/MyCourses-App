@@ -2,23 +2,23 @@ package com.example.mycourses.model;
 
 public class messageModel {
 
-    String iconURl, msgTitle, message;
+    String iconUrl, msgTitle, message;
 
     public messageModel() {
     }
 
-    public messageModel(String iconURl, String msgTitle, String message) {
-        this.iconURl = iconURl;
+    public messageModel(String iconUrl, String msgTitle, String message) {
+        this.iconUrl = iconUrl;
         this.msgTitle = msgTitle;
         this.message = message;
     }
 
-    public String getIconURl() {
-        return iconURl;
+    public String getIconUrl() {
+        return iconUrl;
     }
 
-    public void setIconURl(String iconURl) {
-        this.iconURl = iconURl;
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
     public String getMsgTitle() {

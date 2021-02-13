@@ -1,5 +1,6 @@
 package com.example.mycourses.adapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewholder holder, int position) {
-        String Uri = msgList.get(position).getIconURl();
+        String Uri = msgList.get(position).getIconUrl();
         String title = msgList.get(position).getMsgTitle();
         String message = msgList.get(position).getMessage();
         holder.setdata(Uri, title, message);
@@ -45,7 +46,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public int getItemCount() {
-        return 0;
+        return msgList.size();
     }
 
     class MessageViewholder extends RecyclerView.ViewHolder{

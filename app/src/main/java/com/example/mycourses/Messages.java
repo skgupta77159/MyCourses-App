@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.mycourses.adapter.MessageAdapter;
 import com.example.mycourses.adapter.SubAdapter;
@@ -45,8 +46,8 @@ public class Messages extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    for(DataSnapshot chpSnapshot: snapshot.getChildren()){
-                        messageModel MsgInfo = chpSnapshot.getValue(messageModel.class);
+                    for(DataSnapshot msgSnapshot: snapshot.getChildren()){
+                        messageModel MsgInfo = msgSnapshot.getValue(messageModel.class);
                         MsgList.add(MsgInfo);
                         MessageAdapter messageAdapter = new MessageAdapter(MsgList);
                         recyclerView.setLayoutManager(new LinearLayoutManager(Messages.this));
@@ -61,5 +62,19 @@ public class Messages extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
