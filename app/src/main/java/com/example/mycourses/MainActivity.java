@@ -139,7 +139,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                         Toast.makeText(MainActivity.this, "You are in home ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_messages:
-                        Toast.makeText(MainActivity.this, "messages", Toast.LENGTH_SHORT).show();
+                        Intent intent3 = new Intent(MainActivity.this, Messages.class);
+                        startActivity(intent3);
                         break;
                     case R.id.nav_settings:
                         Intent intent2 = new Intent(MainActivity.this, Setting.class);

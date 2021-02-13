@@ -48,7 +48,7 @@ public class Messages extends AppCompatActivity {
                     for(DataSnapshot chpSnapshot: snapshot.getChildren()){
                         messageModel MsgInfo = chpSnapshot.getValue(messageModel.class);
                         MsgList.add(MsgInfo);
-                        MessageAdapter messageAdapter = new MessageAdapter(MsgList, Messages.this);
+                        MessageAdapter messageAdapter = new MessageAdapter(MsgList);
                         recyclerView.setLayoutManager(new LinearLayoutManager(Messages.this));
                         messageAdapter.notifyDataSetChanged();
                         recyclerView.setAdapter(messageAdapter);
