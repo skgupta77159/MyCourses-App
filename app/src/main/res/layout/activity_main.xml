@@ -23,8 +23,8 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/header_image_toolbar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             app:civ_border_width="1dp"
             app:civ_border_color="@color/green"
             android:layout_marginEnd="20dp"
@@ -34,6 +34,17 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/profile"
             android:textAlignment="center" />
+        <ImageView
+            android:id="@+id/toolbarMsg"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:src="@drawable/notification"
+            android:layout_marginEnd="65dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            app:tint="#ffffff" />
 
 
         <androidx.core.widget.NestedScrollView

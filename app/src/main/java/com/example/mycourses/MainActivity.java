@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private NavigationView navigationView;
     private CircularImageView header_image, header_image_toolbar;
     private TextView header_username, naming_status, header_email;
+    ImageView imgView;
     String CurrentUserId;
 
 
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         naming_status = findViewById(R.id.naming_status);
         header_image_toolbar = findViewById(R.id.header_image_toolbar);
         header_email = navView.findViewById(R.id.header_email);
+        imgView = findViewById(R.id.toolbarMsg);
 
         setSupportActionBar(toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -119,6 +122,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Profile_Activity.class);
                 startActivity(intent);
+            }
+        });
+
+        imgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(MainActivity.this, Messages.class);
+                startActivity(intent3);
             }
         });
 
