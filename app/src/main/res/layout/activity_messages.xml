@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Messages">
+    tools:context=".Messages"
+    android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
@@ -14,5 +15,12 @@
         app:title="Messages"
         app:titleMarginStart="25dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/msgRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
