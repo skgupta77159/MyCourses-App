@@ -13,15 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCourses">
-        <activity android:name=".Messages"></activity>
-        <activity android:name=".Setting" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Messages" />
+        <activity android:name=".Setting" />
+        <activity android:name=".SplashScreen"></activity>
         <activity android:name=".Profile_Activity" />
         <activity android:name=".Login_Activity" />
         <activity
@@ -29,7 +30,9 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".chapters" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
     </application>
 
 </manifest>
