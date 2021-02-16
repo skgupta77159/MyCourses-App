@@ -48,6 +48,7 @@ public class videoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+
         toolbar = findViewById(R.id.mainToolbar);
         progressBar = findViewById(R.id.progressBar);
         title = findViewById(R.id.videoTitle);
@@ -96,6 +97,7 @@ public class videoActivity extends AppCompatActivity {
 
             }
         });
+
 
         Uri videoUrl = Uri.parse(url);
         videoPlayer.setVideoURI(videoUrl);
