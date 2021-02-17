@@ -48,7 +48,8 @@
                 android:layout_gravity="end"
                 android:padding="5dp"
                 app:srcCompat="@drawable/ic_baseline_fullscreen_24"
-                tools:ignore="VectorDrawableCompat" />
+                tools:ignore="VectorDrawableCompat"
+                app:tint="#CDDC39" />
         </FrameLayout>
 
         <androidx.cardview.widget.CardView

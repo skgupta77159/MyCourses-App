@@ -30,9 +30,8 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".chapters" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
 
-        </activity>
     </application>
 
 </manifest>
