@@ -35,14 +35,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center">
+
             <TextView
                 android:id="@+id/subName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="subject"
-                android:textSize="20dp"
+                android:textAlignment="center"
                 android:textColor="@color/green"
-                android:textAlignment="center"/>
+                android:textSize="20dp" />
             <TextView
                 android:id="@+id/subWel"
                 android:layout_width="match_parent"
