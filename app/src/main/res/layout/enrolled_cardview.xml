@@ -42,6 +42,7 @@
                     android:id="@+id/courseName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="Java"
                     android:textAlignment="center"
                     android:textColor="@color/green"
@@ -52,11 +53,12 @@
                     android:id="@+id/coursePercent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Completed 80%"
+                    android:fontFamily="@font/montserrat_bold"
                     android:paddingTop="3dp"
-                    android:textColor="@color/green"
+                    android:text="Completed 80%"
                     android:textAlignment="center"
-                    android:textSize="18dp"/>
+                    android:textColor="@color/green"
+                    android:textSize="18dp" />
             </LinearLayout>
         </LinearLayout>
 
