@@ -37,13 +37,15 @@
                     app:civ_border_color="@color/green"
                     app:civ_border_width="1dp"
                     android:layout_margin="5dp"/>
+
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="25dp"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textAlignment="center"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
                 <TextView
                     android:id="@+id/email"
                     android:textColor="@color/white"

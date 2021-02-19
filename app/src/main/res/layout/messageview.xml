@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/MsgTitle"
             android:layout_width="match_parent"
@@ -36,6 +37,7 @@
             android:textStyle="bold">
 
         </TextView>
+
         <TextView
             android:id="@+id/Message"
             android:layout_width="match_parent"

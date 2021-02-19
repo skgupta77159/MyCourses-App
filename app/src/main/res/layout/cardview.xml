@@ -37,21 +37,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/courseName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="Java"
-                    android:textStyle="bold"
-                    android:textColor="@color/green"
                     android:textAlignment="center"
-                    android:textSize="17dp"/>
+                    android:textColor="@color/green"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/enroll_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Start"
-                    />
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Start" />
             </LinearLayout>
         </LinearLayout>
 

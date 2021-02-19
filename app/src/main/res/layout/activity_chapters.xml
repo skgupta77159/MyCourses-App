@@ -40,17 +40,20 @@
                 android:id="@+id/subName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="subject"
                 android:textAlignment="center"
                 android:textColor="@color/green"
                 android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/subWel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Welcome message"
-                android:textColor="@color/green"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="@color/green" />
         </LinearLayout>
 
     </LinearLayout>
