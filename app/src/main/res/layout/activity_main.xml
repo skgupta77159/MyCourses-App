@@ -19,6 +19,7 @@
             android:background="@drawable/gradient1"
             android:minHeight="?attr/actionBarSize"
             app:title="MyCourses"
+            font
             app:titleMarginStart="25dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
         <com.mikhaellopez.circularimageview.CircularImageView
