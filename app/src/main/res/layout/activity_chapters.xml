@@ -44,7 +44,7 @@
                 android:text="subject"
                 android:textAlignment="center"
                 android:textColor="@color/green"
-                android:textSize="20dp" />
+                android:textSize="17dp" />
 
             <TextView
                 android:id="@+id/subWel"
@@ -53,6 +53,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Welcome message"
                 android:textAlignment="center"
+                android:textSize="13dp"
                 android:textColor="@color/green" />
         </LinearLayout>
 
