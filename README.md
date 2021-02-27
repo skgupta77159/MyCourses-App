@@ -29,7 +29,7 @@
 [Messages]: https://github.com/skgupta77159/Raw-Project/blob/master/MyCoursesApp/mycourses11.png
 [Settings]: https://github.com/skgupta77159/Raw-Project/blob/master/MyCoursesApp/mycourses12.png
 
-|    Splash Screen      |    Checking Connectivity |  Google SignIn Api  | Choose Account |
+|    Splash Screen      |    Checking Connectivity |  Google SignIn API  | Choose Account |
 | ------------- |:-------------: |:------:|:---------------------:|
 |![alt text][splash]  | ![alt text][checking connectivity] | ![alt text][Google SignIn Api]  | ![alt text][Choose Account]|
 
