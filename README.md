@@ -14,7 +14,7 @@
 * Google SignIn API.
 * Keep track of Course Completion.
 * User can track the percentage of videos completed in particular course.
-* 
+
 ## Screen Shot
 [splash]: https://github.com/skgupta77159/Raw-Project/blob/master/MyCoursesApp/mycourses01.png
 [checking connectivity]: https://github.com/skgupta77159/Raw-Project/blob/master/MyCoursesApp/mycourses02.png
