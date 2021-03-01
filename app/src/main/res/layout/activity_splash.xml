@@ -5,32 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="220dp"
                 android:layout_height="220dp"
                 android:src="@drawable/mycourses" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MyCourses"
-                android:textSize="30dp"
-                android:textAlignment="center"
                 android:fontFamily="@font/montserrat_bold"
-                android:textColor="@color/purple_700"/>
+                android:text="MyCourses"
+                android:textAlignment="center"
+                android:textColor="@color/purple_700"
+                android:textSize="30dp" />
         </LinearLayout>
 
     </LinearLayout>
