@@ -96,7 +96,7 @@ public class Setting extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 String body = "Download Link";
-                String title = "https://drive.google.com/file/d/1bIFq7e3ygR6kC-iuIWDJWGZXn692E6Z3/view?usp=sharing";
+                String title = "https://drive.google.com/file/d/1DQHAKzjwdxySw0hvn0UTYVFav9Db4n5B/view?usp=sharing";
                 intent.putExtra(Intent.EXTRA_SUBJECT,body);
                 intent.putExtra(Intent.EXTRA_TEXT,title);
                 startActivity(Intent.createChooser(intent,"Share using"));

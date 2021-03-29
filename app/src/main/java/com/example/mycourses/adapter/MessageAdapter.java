@@ -41,7 +41,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         String Uri = msgList.get(position).getIconUrl();
         String title = msgList.get(position).getMsgTitle();
         String message = msgList.get(position).getMessage();
-        holder.setdata(Uri, title, message);
+        String date = msgList.get(position).getDate();
+        holder.setdata(Uri, title, message, date);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     }
 
     class MessageViewholder extends RecyclerView.ViewHolder{
-        TextView Title, Message;
+        TextView Title, Message, msg_date;
         ImageView imageview;
 
         public MessageViewholder(@NonNull View itemView) {
@@ -58,10 +59,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             Title = itemView.findViewById(R.id.MsgTitle);
             Message = itemView.findViewById(R.id.Message);
             imageview = itemView.findViewById(R.id.MsgIcon);
+            msg_date = itemView.findViewById(R.id.msg_date);
         }
-        private void setdata(String uri, String title, String message){
+        private void setdata(String uri, String title, String message, String Date){
             Title.setText(title);
             Message.setText(message);
+            msg_date.setText(Date);
             Picasso.get().load(uri).into(imageview);
         }
     }

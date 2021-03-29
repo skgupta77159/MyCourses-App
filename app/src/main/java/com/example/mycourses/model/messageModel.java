@@ -2,15 +2,23 @@ package com.example.mycourses.model;
 
 public class messageModel {
 
-    String iconUrl, msgTitle, message;
+    String iconUrl, msgTitle, message, date;
 
     public messageModel() {
     }
 
-    public messageModel(String iconUrl, String msgTitle, String message) {
+    public messageModel(String iconUrl, String msgTitle, String message, String date) {
         this.iconUrl = iconUrl;
         this.msgTitle = msgTitle;
         this.message = message;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getIconUrl() {

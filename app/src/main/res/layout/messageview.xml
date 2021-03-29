@@ -22,7 +22,7 @@
         android:padding="5dp"
         android:background="@color/purple_200"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -40,6 +40,7 @@
 
         <TextView
             android:id="@+id/Message"
+            android:layout_below="@+id/MsgTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="The Message descirption Description Will be shown here"
@@ -47,8 +48,16 @@
             android:textSize="15dp">
 
         </TextView>
+        <TextView
+            android:id="@+id/msg_date"
+            android:layout_below="@+id/Message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="28/03/2021 8:21 PM"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentRight="true"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

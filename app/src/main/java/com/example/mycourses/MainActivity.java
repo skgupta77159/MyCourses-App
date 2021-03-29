@@ -2,16 +2,24 @@ package com.example.mycourses;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.text.SpannableString;
+import android.text.util.Linkify;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     RecyclerView recyclerView;
     private FirebaseAuth mAuth;
     FirebaseDatabase database;
-    DatabaseReference dataRef, userRef;
+    DatabaseReference dataRef, userRef, versionRef;
     private Toolbar toolbar;
     List<sublist> SubList = new ArrayList<>();
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -52,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private TextView header_username, naming_status, header_email;
     ImageView imgView;
     String CurrentUserId;
+    String oVersion = "1.1";
+    String newVersion;
 
 
     @Override
@@ -84,7 +94,22 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         database = FirebaseDatabase.getInstance();
         dataRef = database.getReference("courses");
         userRef = database.getReference("users").child(CurrentUserId);
+        versionRef = database.getReference("Version");
 
+        versionRef.child("version").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    newVersion = snapshot.getValue().toString();
+                    if(!oVersion.equals(newVersion)){
+                        showDownloadDialogBox();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
@@ -197,6 +222,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                 }
             }
         });
+    }
+
+
+    private void showDownloadDialogBox() {
+
+        final AlertDialog dialog=new AlertDialog.Builder(MainActivity.this).create();
+        View view= LayoutInflater.from(MainActivity.this).inflate(R.layout.dialogpopup,null);
+        Button cancelBtn;
+        cancelBtn=view.findViewById(R.id.canclebtn);
+        dialog.setCancelable(false);
+        dialog.setView(view);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        dialog.show();
+
     }
 
     @Override

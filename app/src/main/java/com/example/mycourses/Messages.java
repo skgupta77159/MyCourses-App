@@ -50,7 +50,10 @@ public class Messages extends AppCompatActivity {
                         messageModel MsgInfo = msgSnapshot.getValue(messageModel.class);
                         MsgList.add(MsgInfo);
                         MessageAdapter messageAdapter = new MessageAdapter(MsgList);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(Messages.this));
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Messages.this);
+                        linearLayoutManager.setReverseLayout(true);
+                        linearLayoutManager.setStackFromEnd(true);
+                        recyclerView.setLayoutManager(linearLayoutManager);
                         messageAdapter.notifyDataSetChanged();
                         recyclerView.setAdapter(messageAdapter);
                     }

@@ -2,4 +2,5 @@
     <string name="app_name">MyCourses</string>
     <string name="drawer_open" />
     <string name="drawer_close" />
+    <string name="txtCredits">https://drive.google.com/file/d/1DQHAKzjwdxySw0hvn0UTYVFav9Db4n5B/view?usp=sharing</string>
 </resources>
