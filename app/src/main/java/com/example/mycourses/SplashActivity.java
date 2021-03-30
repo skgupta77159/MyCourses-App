@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SplashActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private DatabaseReference userRef, versionRef;
+    private DatabaseReference userRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +35,35 @@ public class SplashActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(!isConnected(this)){
             showDialogBox();
         }
         else if(currentUser != null) {
-            Intent MainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            MainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            MainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(MainIntent);
-            overridePendingTransition(0,0);
-            finish();
+            final String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            userRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.hasChild(user)){
+                        Intent MainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                        MainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        MainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(MainIntent);
+                        overridePendingTransition(0,0);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }else{
             Intent MainIntent = new Intent(SplashActivity.this, Login_Activity.class);
             MainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
