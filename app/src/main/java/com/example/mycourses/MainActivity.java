@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private TextView header_username, naming_status, header_email;
     ImageView imgView;
     String CurrentUserId;
-    String oVersion = "1.1";
+    String oVersion = "1.0";
     String newVersion;
 
 

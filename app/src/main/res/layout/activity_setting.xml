@@ -225,7 +225,7 @@
                             android:paddingStart="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="| Version 1.1"
+                            android:text="| Version 1.0"
                             android:padding="8dp"
                             android:textSize="18dp"/>
                     </LinearLayout>
