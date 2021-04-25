@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -23,6 +24,10 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.mycourses.model.VideoActModel;
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,7 +36,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class videoActivity extends AppCompatActivity {
+public class videoActivity extends YouTubeBaseActivity {
 
     String url, chpkey, subName, chpName;
     ProgressBar progressBar;
@@ -44,28 +49,25 @@ public class videoActivity extends AppCompatActivity {
     FrameLayout frameLayout;
     Toolbar toolbar;
 
+    YouTubePlayerView mYoutubePlayerView;
+    YouTubePlayer.OnInitializedListener onInitializedListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
         toolbar = findViewById(R.id.mainToolbar);
-        progressBar = findViewById(R.id.progressBar);
         title = findViewById(R.id.videoTitle);
         description = findViewById(R.id.videoDesc);
-        videoPlayer = findViewById(R.id.videoView);
-        fullScreen = findViewById(R.id.fullScreenOp);
         frameLayout = findViewById(R.id.frameLayout);
+        mYoutubePlayerView = findViewById(R.id.youtubePlay);
 
         url = getIntent().getStringExtra("VidUrl");
         chpkey = getIntent().getStringExtra("chp");
         subName = getIntent().getStringExtra("subName");
         chpName = getIntent().getStringExtra("chpName");
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(chpName);
 
         mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
@@ -98,43 +100,28 @@ public class videoActivity extends AppCompatActivity {
             }
         });
 
+        onInitializedListener = new YouTubePlayer.OnInitializedListener(){
 
-        Uri videoUrl = Uri.parse(url);
-        videoPlayer.setVideoURI(videoUrl);
-        MediaController mc = new MediaController(this);
-        videoPlayer.setMediaController(mc);
-
-        videoPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onPrepared(MediaPlayer mp) {
-                videoPlayer.start();
-                progressBar.setVisibility(View.GONE);
-            }
-        });
-
-        fullScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int orientation = getResources().getConfiguration().orientation;
-                if(orientation == Configuration.ORIENTATION_PORTRAIT){
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-                    getSupportActionBar().hide();
-                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    frameLayout.setLayoutParams(new ConstraintLayout.LayoutParams(new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)));
-                    videoPlayer.setLayoutParams(new FrameLayout.LayoutParams(new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)));
-                }
-                else{
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    getSupportActionBar().show();
-                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    int heightValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,220,getResources().getDisplayMetrics());
-                    frameLayout.setLayoutParams(new ConstraintLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,heightValue)));
-                    videoPlayer.setLayoutParams(new FrameLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,heightValue)));
-                }
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo("W4hTJybfU7s");
 
             }
-        });
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+            }
+        };
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mYoutubePlayerView.initialize("AIzaSyAknkGc2lZvMvQfP2tW5XpbDxtkEL6G0HU", onInitializedListener);
     }
 
     @Override
@@ -143,20 +130,5 @@ public class videoActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        fullScreen.setVisibility(View.VISIBLE);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        getSupportActionBar().show();
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        int heightValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,220,getResources().getDisplayMetrics());
-        frameLayout.setLayoutParams(new ConstraintLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,heightValue)));
-        videoPlayer.setLayoutParams(new FrameLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,heightValue)));
-        int orientation = getResources().getConfiguration().orientation;
-        if(orientation == Configuration.ORIENTATION_PORTRAIT){
-            super.onBackPressed();
-        }
     }
 }
