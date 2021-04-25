@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,25 +46,19 @@ public class SplashActivity extends AppCompatActivity {
             showDialogBox();
         }
         else if(currentUser != null) {
-            final String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            userRef.addValueEventListener(new ValueEventListener() {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable(){
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.hasChild(user)){
-                        Intent MainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                        MainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        MainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(MainIntent);
-                        overridePendingTransition(0,0);
-                        finish();
-                    }
+                public void run(){
+                    Intent MainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                    MainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    MainIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(MainIntent);
+                    overridePendingTransition(0,0);
+                    finish();
                 }
+            }, 2000);
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
         }else{
             Intent MainIntent = new Intent(SplashActivity.this, Login_Activity.class);
             MainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

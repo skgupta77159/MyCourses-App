@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -66,33 +68,37 @@ public class Setting extends AppCompatActivity {
         txtRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uri = "https://github.com/skgupta77159/MyCourses-App";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(intent);
+                Toast.makeText(Setting.this,"Sorry for inconvenience, we are working on it.", Toast.LENGTH_SHORT).show();
+               // String uri = "https://github.com/skgupta77159/MyCourses-App";
+               // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+               // startActivity(intent);
             }
         });
 
         txtAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uri = "https://github.com/skgupta77159/MyCourses-App";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(intent);
+                Toast.makeText(Setting.this,"Sorry for inconvenience, we are working on it.", Toast.LENGTH_SHORT).show();
+               // String uri = "https://github.com/skgupta77159/MyCourses-App";
+               // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+               // startActivity(intent);
             }
         });
 
         txtHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uri = "https://github.com/skgupta77159/MyCourses-App";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(intent);
+                Toast.makeText(Setting.this,"Sorry for inconvenience, we are working on it.", Toast.LENGTH_SHORT).show();
+               // String uri = "https://github.com/skgupta77159/MyCourses-App";
+               // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+               // startActivity(intent);
             }
         });
 
         txtShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 String body = "Download Link";
@@ -100,6 +106,7 @@ public class Setting extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_SUBJECT,body);
                 intent.putExtra(Intent.EXTRA_TEXT,title);
                 startActivity(Intent.createChooser(intent,"Share using"));
+
             }
         });
 
