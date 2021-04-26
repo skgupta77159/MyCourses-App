@@ -51,6 +51,8 @@ public class Login_Activity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        userReference = firebaseDatabase.getReference("users");
 
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -100,6 +102,7 @@ public class Login_Activity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 Toast.makeText(this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                loadingBar.dismiss();
             }
         }
     }
@@ -111,28 +114,24 @@ public class Login_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             String CurrentUserId = mAuth.getCurrentUser().getUid();
-                            userReference = firebaseDatabase.getInstance().getReference("users").child(CurrentUserId);
 
                             GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(Login_Activity.this);
                             if(signInAccount != null){
-                                HashMap Usermap = new HashMap();
+                                HashMap<String, Object> Usermap = new HashMap();
                                 Usermap.put("fullName", signInAccount.getDisplayName());
                                 Usermap.put("firstName", signInAccount.getGivenName());
                                 Usermap.put("lastName", signInAccount.getFamilyName());
                                 Usermap.put("email", signInAccount.getEmail());
                                 Usermap.put("profileUrl", signInAccount.getPhotoUrl().toString());
-                                userReference.updateChildren(Usermap).addOnCompleteListener(new OnCompleteListener() {
+                                userReference.child(CurrentUserId).updateChildren(Usermap).addOnCompleteListener(new OnCompleteListener() {
                                     @Override
                                     public void onComplete(@NonNull Task task) {
                                         if(task.isSuccessful()) {
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);
                                             finish();
-                                            loadingBar.dismiss();
                                         }
-                                        else{
-                                            loadingBar.dismiss();
-                                        }
+                                        loadingBar.dismiss();
                                     }
                                 });
                             }

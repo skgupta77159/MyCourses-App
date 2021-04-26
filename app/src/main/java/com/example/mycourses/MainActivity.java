@@ -112,14 +112,31 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         });
 
 
-        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Picasso.get().load(snapshot.child("profileUrl").getValue().toString()).into(header_image);
+                    Picasso.get().load(snapshot.child("profileUrl").getValue().toString()).into(header_image_toolbar);
+                    header_username.setText(snapshot.child("fullName").getValue().toString());
+                    header_email.setText(snapshot.child("email").getValue().toString());
+                    naming_status.setText("Hey " + snapshot.child("firstName").getValue().toString() +  " What do you want to learn today!");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+       /* GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null){
             Picasso.get().load(signInAccount.getPhotoUrl()).into(header_image);
             Picasso.get().load(signInAccount.getPhotoUrl()).into(header_image_toolbar);
             header_username.setText(signInAccount.getDisplayName());
             header_email.setText(signInAccount.getEmail());
             naming_status.setText("Hey " + signInAccount.getGivenName() + " What do you want to learn today!");
-        }
+        }*/
 
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override

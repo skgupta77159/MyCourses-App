@@ -63,13 +63,14 @@ public class chapters extends AppCompatActivity implements RecyclerViewClickInte
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
+                    PostList.clear();
                     for(DataSnapshot chpSnapshot: snapshot.getChildren()){
                         post Post = chpSnapshot.getValue(post.class);
                         PostList.add(Post);
                         PostAdapter postsAdapter = new PostAdapter(PostList, chapters.this);
                         recyclerView.setLayoutManager(new LinearLayoutManager(chapters.this));
-                        postsAdapter.notifyDataSetChanged();
                         recyclerView.setAdapter(postsAdapter);
+                        postsAdapter.notifyDataSetChanged();
                     }
                 }
             }
